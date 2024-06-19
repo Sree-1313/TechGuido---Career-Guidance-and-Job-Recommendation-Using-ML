@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        /* Navigation bar styles */
+        .navbar {
+            background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .navbar h1 {
+            margin: 0;
+        }
+        /* Grid container styles */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust the column width as needed */
+            grid-gap: 20px;
+            padding: 0 20px; /* Add some padding to the grid container */
+        }
+        /* Card styles */
+        .result-card {
+            background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        .result-card h2 {
+            margin-top: 0;
+            font-size: 1.2em; /* Increase font size for job titles */
+        }
+        .result-card p {
+            margin: 5px 0;
+            color: #fff; /* Dim the color of secondary text */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Search Results</h1>
+    </div>
+
+    <div class="grid-container">
+        {% if results %}
+            {% for title, info in results.items() %}
+                <div class="result-card">
+                    <h2>{{ title }}</h2>
+                    <p><strong>Company:</strong> {{ info['company'] }}</p>
+                    <p><strong>Job Role:</strong> {{ info['role'] }}</p>
+                    <p><strong>Salary:</strong> {{ info['salary'] }}</p>
+                    <p><strong>Skills:</strong> {{ info['skills'] }}</p>
+                    <p><strong>Location:</strong> {{ info['location'] }}</p>
+                    <p><strong>Qualification:</strong> {{ info['qualification'] }}</p>
+                    <p><strong>Experience:</strong> {{ info['experience'] }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p style="text-align: center;">No results found for "{{ query }}"</p>
+        {% endif %}
+    </div>
+</body>
+</html>

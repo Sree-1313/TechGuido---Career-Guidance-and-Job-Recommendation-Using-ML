@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    
+
+:root {
+
+/**
+ * colors
+ */
+
+--selective-yellow: hsl(52, 72%, 56%);
+--eerie-black-1: hsl(0, 0%, 9%);
+--eerie-black-2: hsl(180, 3%, 7%);
+--quick-silver: hsl(0, 0%, 65%);
+--radical-red: hsl(351, 83%, 61%);
+--light-gray: hsl(0, 0%, 80%);
+--isabelline: hsl(36, 33%, 94%);
+--gray-x-11: hsl(0, 0%, 73%);
+--kappel_15: hsla(170, 75%, 41%, 0.15);
+--platinum: hsl(0, 0%, 90%);
+--gray-web: hsl(0, 0%, 50%);
+--black_80: hsla(0, 0%, 0%, 0.8);
+--white_50: hsla(0, 0%, 100%, 0.5);
+--black_50: hsla(0, 0%, 0%, 0.5);
+--black_30: hsla(0, 0%, 0%, 0.3);
+--kappel: rgb(41, 166, 169);;
+--white: hsl(0, 0%, 100%);
+
+/**
+ * gradient color
+ */
+
+--gradient: linear-gradient(-90deg,hsl(151, 58%, 46%) 0%,hsl(170, 75%, 41%) 100%);
+
+/**
+ * typography
+ */
+
+--ff-league_spartan: 'League Spartan', sans-serif;
+--ff-poppins: 'Poppins', sans-serif; 
+
+--fs-1: 4.2rem;
+--fs-2: 3.2rem;
+--fs-3: 2.3rem;
+--fs-4: 1.8rem;
+--fs-5: 1.5rem;
+--fs-6: 1.4rem;
+--fs-7: 1.3rem;
+
+--fw-500: 500;
+--fw-600: 600;
+
+/**
+ * spacing
+ */
+
+--section-padding: 75px;
+
+/**
+ * shadow
+ */
+
+--shadow-1: 0 6px 15px 0 hsla(0, 0%, 0%, 0.05);
+--shadow-2: 0 10px 30px hsla(0, 0%, 0%, 0.06);
+--shadow-3: 0 10px 50px 0 hsla(220, 53%, 22%, 0.1);
+
+/**
+ * radius
+ */
+
+--radius-pill: 500px;
+--radius-circle: 50%;
+--radius-3: 3px;
+--radius-5: 5px;
+--radius-10: 10px;
+
+/**
+ * transition
+ */
+
+--transition-1: 0.25s ease;
+--transition-2: 0.5s ease;
+--cubic-in: cubic-bezier(0.51, 0.03, 0.64, 0.28);
+--cubic-out: cubic-bezier(0.33, 0.85, 0.4, 0.96);
+
+}
+.navbar {
+  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0); 
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            /*border: 2px solid var(--isabelline);*/
+
+        }
+        .navbar h1 {
+            margin: 0;
+            }
+
+/*-----------------------------------*\
+  #RESET
+\*-----------------------------------*/
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li { list-style: none; }
+
+a,
+img,
+span,
+data,
+input,
+button,
+ion-icon { display: block; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img { height: auto; }
+
+input,
+button {
+  background: none;
+  border: none;
+  font: inherit;
+}
+
+input { width: 100%; }
+
+button { cursor: pointer; }
+
+ion-icon { pointer-events: none; }
+
+address { font-style: normal; }
+
+html {
+  font-family: var(--ff-poppins);
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: hsl(180, 3%, 7%);
+  color: var(--gray-web);
+  font-size: 1.6rem;
+  line-height: 1.75;
+}
+
+:focus-visible { outline-offset: 4px; }
+
+::-webkit-scrollbar { width: 10px; }
+
+::-webkit-scrollbar-track { background-color: hsl(0, 0%, 98%); }
+
+::-webkit-scrollbar-thumb { background-color: hsl(0, 0%, 80%); }
+
+::-webkit-scrollbar-thumb:hover { background-color: hsl(0, 0%, 70%); }
+
+
+
+
+
+/*-----------------------------------*\
+  #REUSED STYLE
+\*-----------------------------------*/
+
+.container { padding-inline: 15px; }
+
+.section { padding-block: var(--section-padding); }
+
+.shape {
+  position: absolute;
+  display: none;
+}
+
+.has-bg-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.h1,
+
+.h3 {
+  color: var(--white);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: 1;
+}
+.h2{
+  color: black;
+  margin:10px;
+  }
+.h1,
+.h2 { font-weight: var(--fw-600); }
+
+.h1 { font-size: var(--fs-1); }
+
+.h2 { font-size: var(--fs-2); }
+
+.h3 {
+  font-size: var(--fs-3);
+  font-weight: var(--fw-500);
+}
+
+.section-title {
+  --color: var(--radical-red);
+  text-align: center;
+}
+
+.section-title .span {
+  display: inline-block;
+  color: var(--white);
+}
+
+.btn {
+  background-color: var(--kappel);
+  color: var(--white);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: var(--fs-4);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  max-width: max-content;
+  padding: 10px 20px;
+  border-radius: var(--radius-5);
+  overflow: hidden;
+}
+
+.has-before,
+.has-after {
+  position: relative;
+  z-index: 1;
+}
+
+.has-before::before,
+.has-after::after {
+  position: absolute;
+  content: "";
+}
+
+.btn::before {
+  inset: 0;
+  background-image: var(--gradient);
+  z-index: -1;
+  border-radius: inherit;
+  transform: translateX(-100%);
+  transition: var(--transition-2);
+}
+
+.btn:is(:hover, :focus)::before { transform: translateX(0); }
+
+.img-holder {
+  aspect-ratio: var(--width) / var(--height);
+  background-color: var(--light-gray);
+  overflow: hidden;
+}
+
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section-subtitle {
+  font-size: var(--fs-5);
+  text-transform: uppercase;
+  font-weight: var(--fw-500);
+  letter-spacing: 1px;
+  text-align: center;
+  margin-block-end: 15px;
+}
+
+.section-text {
+  font-size: var(--fs-5);
+  text-align: center;
+  margin-block: 15px 25px;
+}
+
+.grid-list {
+  display: grid;
+  gap: 30px;
+}
+
+.category-card,
+.stats-card { background-color: hsla(var(--color), 0.1); }
+
+:is(.course, .blog) .section-title { margin-block-end: 40px; }
+
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------*\
+#COURSE
+\*-----------------------------------*/
+
+.course { background-color: white;}
+
+.course-card {
+position: relative;
+background : -webkit-linear-gradient(-135deg, #c850c0, #4158d0); 
+border-radius: var(--radius-5);
+overflow: hidden;
+}
+
+.course-card .img-cover { transition: var(--transition-2); }
+
+.course-card:is(:hover, :focus-within) .img-cover { transform: scale(1.1); }
+
+.course-card :is(.abs-badge, .badge) {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+border-radius: var(--radius-3);
+}
+
+.course-card .abs-badge {
+position: absolute;
+top: 10px;
+right: 10px;
+background-color: var(--selective-yellow);
+color: var(--white);
+display: flex;
+align-items: center;
+gap: 5px;
+line-height: 1;
+padding: 6px 8px;
+padding-block-end: 3px;
+}
+
+.course-card .abs-badge ion-icon {
+font-size: 18px;
+margin-block-end: 5px;
+--ionicon-stroke-width: 50px;
+}
+ .grid-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust min and max width as needed */
+      gap: 20px; /* Adjust the gap between grid items */
+    }
+.course-card .card-content { padding: 25px; }
+
+.course-card .badge {
+background-color: var(--kappel_15);
+max-width: max-content;
+color: var(--white);
+line-height: 25px;
+padding-inline: 10px;
+}
+
+.course-card .card-title {
+display: -webkit-box;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 2;
+overflow: hidden;
+margin-block: 15px 8px;
+transition: var(--transition-1);
+}
+
+.course-card .card-title:is(:hover, :focus) { color: var(--white); }
+
+.course-card :is(.wrapper, .rating-wrapper, .card-meta-list, .card-meta-item) {
+display: flex;
+align-items: center;
+}
+
+.course-card .wrapper { gap: 10px; }
+
+.course-card .rating-wrapper { gap: 3px; }
+
+.course-card .rating-wrapper ion-icon { color: var(--selective-yellow); }
+
+.course-card .rating-text {
+color: var(--white);
+font-size: var(--fs-6);
+font-weight: var(--fw-500);
+}
+
+.course-card .price {
+color: var(--white);
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+font-size: var(--fs-4);
+font-weight: var(--fw-600);
+margin-block: 8px 15px;
+}
+
+.course-card .card-meta-list { flex-wrap: wrap; }
+
+.course-card .card-meta-item {
+position: relative;
+gap: 5px;
+}
+
+.course-card .card-meta-item:not(:last-child)::after {
+content: "|";
+display: inline-block;
+color: var(--white);
+padding-inline: 10px;
+}
+
+.course-card .card-meta-item ion-icon {
+color: var(--quick-silver);
+--ionicon-stroke-width: 50px;
+}
+
+.course-card .card-meta-item .span {
+color: var(--eerie-black-1);
+font-size: var(--fs-7);
+}
+
+.course .btn {
+margin-inline: auto;
+margin-block-start: 60px;
+}
+.section-subtitle,
+.section-title {
+  text-align: center;
+}
+
+        /* Button styles */
+        .container {
+      text-align: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0); /* Use your desired color */
+      color: var(--white); /* Text color */
+      border: none;
+      border-radius: var(--radius-3);
+      font-size: var(--fs-3);
+      font-weight: var(--fw-300);
+      text-decoration: none;
+      transition: background-color -webkit-linear-gradient(-135deg, #c850c0, #4158d0); 
+    }
+
+    .btn:hover {
+      background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0); 
+    }
+
+    .btn .span {
+      margin-right: 5px; /* Add space between text and icon */
+    }
+
+
+
+
+
+
+
+  </style>
+  
+
+  
+
+
+ 
+
+ 
+
+</head>
+
+<body id="top">
+      <div class="navbar">
+        <h1>COURSES</h1>
+        <!-- Navigation links can be added here -->
+    </div>
+
+  
+
+
+
+
+      <!-- 
+        - #COURSE
+      -->
+
+      <section class="section course" id="courses" aria-label="course">
+        <div class="container">
+
+
+          <h2 class="h2 section-title">Pick A Course To Get Started</h2>
+          <ul class="grid-list">
+
+            <li>
+              <div class="course-card">
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img
+                    src="{{url_for('static', filename='course-1.jpg')}}"
+                    width="370"
+                    height="220"
+                    loading="lazy"
+                    alt="Build Responsive Real- World Websites with HTML and CSS"
+                    class="img-cover"
+                  />
+                </figure>
+            
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+                  <span class="span">6 Weeks</span>
+                </div>
+            
+                <div class="card-content">
+                  <span class="badge">Beginner</span>
+                  <h3 class="h3">
+                    <p class="card-title">HTML and CSS</p>
+                  </h3>
+            
+                  <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="rating-wrapper" style="display: flex; align-items: center;">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                    <div class="card-meta-item" style="display: flex; align-items: center;">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+                      <span class="span">8 Lessons</span>
+                    </div>
+                  </div>
+      
+                  <!-- Center the "Learn More" button -->
+                  <div style="text-align: center; margin-top: 20px;">
+                    <!-- Link to 'course1' route with styled button -->
+                    <a href="{{ url_for('course1') }}" class="button" style="color: white; ">
+                        Learn More
+                    </a>
+                </div>
+            
+                </div>
+              </div>
+            </li>
+            
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="{{url_for('static', filename='course-2.jpg')}}" width="370" height="220" loading="lazy"
+                    alt="Java Programming Masterclass for Software Developers" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Intermediate</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Content Marketing</a>
+                  </h3>
+
+                  <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="rating-wrapper" style="display: flex; align-items: center;">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                    <div class="card-meta-item" style="display: flex; align-items: center;">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+                      <span class="span">12 Lessons</span>
+                    </div>
+                  </div>
+      
+                  <!-- Center the "Learn More" button -->
+                  <div style="text-align: center; margin-top: 20px;">
+                    <a href="{{ url_for('course2') }}" class="button" style="color: white; ">
+                      Learn More
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="{{url_for('static', filename='course-3.jpg')}}" width="370" height="220" loading="lazy"
+                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">8 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Advance</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Java Programming </a>
+                  </h3>
+
+                  <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="rating-wrapper" style="display: flex; align-items: center;">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                    <div class="card-meta-item" style="display: flex; align-items: center;">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+                      <span class="span">8 Lessons</span>
+                    </div>
+                  </div>
+      
+                  <!-- Center the "Learn More" button -->
+                  <div style="text-align: center; margin-top: 20px;">
+                    <a href="{{ url_for('course3') }}" class="button" style="color: white; ">
+                      Learn More
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+          <section class="section course" id="courses" aria-label="course">
+        <div class="container">
+
+
+          <ul class="grid-list">
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="{{url_for('static', filename='course-4.jpg')}}" width="370" height="220" loading="lazy"
+                    alt="Build Responsive Real- World Websites with HTML and CSS" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">6 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Beginner</span>
+
+                  <h3 class="h3">
+                    <p class="card-title">Database MySQL AND SQL</p>
+                  </h3>
+
+                  <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="rating-wrapper" style="display: flex; align-items: center;">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                    <div class="card-meta-item" style="display: flex; align-items: center;">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+                      <span class="span">8 Lessons</span>
+                    </div>
+                  </div>
+      
+                  <!-- Center the "Learn More" button -->
+                  <div style="text-align: center; margin-top: 20px;">
+                    <a href="{{ url_for('course4') }}" class="button" style="color: white; ">
+                      Learn More
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="{{url_for('static', filename='course-5.jpg')}}" width="370" height="220" loading="lazy"
+                    alt="Java Programming Masterclass for Software Developers" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">3 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Intermediate</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">UI/UX Design</a>
+                  </h3>
+
+                  <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="rating-wrapper" style="display: flex; align-items: center;">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                    <div class="card-meta-item" style="display: flex; align-items: center;">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+                      <span class="span">8 Lessons</span>
+                    </div>
+                  </div>
+      
+                  <!-- Center the "Learn More" button -->
+                  <div style="text-align: center; margin-top: 20px;">
+                    <a href="{{ url_for('course5') }}" class="button" style="color: white; ">
+                      Learn More
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <div class="course-card">
+
+                <figure class="card-banner img-holder" style="--width: 370; --height: 220;">
+                  <img src="{{url_for('static', filename='course-6.jpeg')}}" width="370" height="220" loading="lazy"
+                    alt="The Complete Camtasia Course for Content Creators" class="img-cover">
+                </figure>
+
+                <div class="abs-badge">
+                  <ion-icon name="time-outline" aria-hidden="true"></ion-icon>
+
+                  <span class="span">8 Weeks</span>
+                </div>
+
+                <div class="card-content">
+
+                  <span class="badge">Advance</span>
+
+                  <h3 class="h3">
+                    <a href="#" class="card-title">Python Programming </a>
+                  </h3>
+
+                  <div class="wrapper" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div class="rating-wrapper" style="display: flex; align-items: center;">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+                    <div class="card-meta-item" style="display: flex; align-items: center;">
+                      <ion-icon name="library-outline" aria-hidden="true"></ion-icon>
+                      <span class="span">8 Lessons</span>
+                    </div>
+                  </div>
+      
+                  <!-- Center the "Learn More" button -->
+                  <div style="text-align: center; margin-top: 20px;">
+                    <a href="{{ url_for('course6') }}" class="button" style="color: white; ">
+                      Learn More
+                  </a>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+
+
+
+           <a href="#" class="btn has-before">
+    <span class="span">Browse more courses</span>
+    <ion-icon name= aria-hidden="true"></ion-icon>
+  </a>
+
+        </div>
+      </section>
+
+
+
+
+
+      
+
+
+
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #F2F4D7;
+        }
+
+        .container {
+            background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+            padding: 12px;
+            border-radius: 8px;
+            border: 2px solid white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 450px;
+           
+        }
+
+        h1 {
+            text-align: center;
+            
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        input[type="number"],
+        input[type="file"] {
+            width: 97%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #c850c0;
+            border: none;
+            border-radius: 5px;
+            color:#F2F4D7;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #c850c0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>REGISTER</h1>
+        <form action="/register" method="post" enctype="multipart/form-data">
+            <div class="user-details">
+               
+                <div class="form-group">
+                    <label for="degree">Degree:</label>
+                    <input type="text" id="degree" name="degree" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="stream">Stream:</label>
+                    <input type="text" id="stream" name="stream" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cgpa">CGPA:</label>
+                    <input type="number" id="cgpa" name="cgpa" step="0.01" min="0" max="10" required>
+                </div>
+                
+                
+
+                <div class="form-group">
+                    <label for="jobtitle">Job Title:</label>
+                    <input type="text" id="jobtitle" name="jobtitle" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Experience:</label>
+                    <input type="text" id="experience" name="experience" required>
+                </div>
+
+                <label for="resume">Upload Resume:</label><br>
+                <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx"><br><br>
+               
+                
+                
+            </div>
+            
+            <input type="submit" value="Register" class="btn">
+        </form>
+    </div>
+</body>
+</html>

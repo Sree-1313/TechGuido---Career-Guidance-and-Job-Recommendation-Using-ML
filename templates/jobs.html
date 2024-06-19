@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jobs Portal</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: white;
+
+        }
+        /* Navigation bar styles */
+        .navbar {
+            background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0); 
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+
+
+        }
+        .navbar h1 {
+            margin: 0;
+        }
+        /* Job card container styles */
+        .job-container {
+            display: flex;
+
+            
+            flex-wrap: wrap; 
+            justify-content: center;
+            margin-top: 30px;
+        }
+        /* Job card styles */
+        .job-card {
+            background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0); 
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: 300px;
+            padding: 20px;
+        }
+        .job-card h2 {
+            margin-top: 0;
+            color: #fff;
+        }
+        .job-card p {
+            margin: 10px 0;
+            color: #fff;
+        }
+        /* Search box container styles */
+        .search-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        /* Text box styles */
+        .search-box {
+            padding: 10px;
+            border: 1px solid linear-gradient(180deg, #5846f9 0%, #7b27d8 100%);;
+            border-radius: 5px;
+            width: 800px;
+            margin-right: 40px;
+        }
+        /* Search button styles */
+        .search-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(180deg, #5846f9 0%, #7b27d8 100%);
+            color: #fff;
+            cursor: pointer;
+        }
+        .search-button:hover {
+            background: linear-gradient(180deg, #5846f9 0%, #7b27d8 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Jobs Portal</h1>
+        <!-- Navigation links can be added here -->
+    </div>
+
+     <div class="search-container">
+        <form action="/search" method="get">
+            <input type="text" name="q" placeholder="Enter job name" class="search-box">
+            <br><br> <!-- Add some space between the text box and button -->
+            <input type="submit" value="Search" class="search-button">
+        </form>
+    </div>
+
+    
+
+
+</body>
+</html>
